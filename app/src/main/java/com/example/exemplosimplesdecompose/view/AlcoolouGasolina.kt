@@ -180,7 +180,7 @@ fun AlcoolGasolinaPreco(navController: NavHostController) {
                 )
             }
             // Botão de cálculo
-
+            val textoSalvar = stringResource(R.string.btn_calcular)
             Button(
                 onClick = {
                     val precoGasolina = gasolina.replace(",", ".").toDoubleOrNull() ?: 0.0
@@ -201,7 +201,9 @@ fun AlcoolGasolinaPreco(navController: NavHostController) {
 
                     repository.salvarPosto(novoPosto)
                 },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+
             ) {
                 Text(stringResource(R.string.btn_calcular))
             }

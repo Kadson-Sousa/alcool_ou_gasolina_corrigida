@@ -104,7 +104,7 @@ fun ListaDePostos(navController: NavHostController, nomeDoPosto: String) {
                                 }) {
                                     Icon(
                                         imageVector = Icons.Filled.LocationOn,
-                                        contentDescription = stringResource(R.string.ver_mapa),
+                                        contentDescription = "${stringResource(R.string.ver_mapa)} ${item.nome}",
                                         tint = MaterialTheme.colorScheme.primary
                                     )
                                 }
@@ -115,19 +115,22 @@ fun ListaDePostos(navController: NavHostController, nomeDoPosto: String) {
                                     navController.previousBackStackEntry?.savedStateHandle?.set("edit_gasolina", item.precoGasolina.toString())
                                     navController.popBackStack()
                                 }) {
-                                    Icon(Icons.Filled.Edit, contentDescription = stringResource(R.string.editar))
-                                }
-
+                                    Icon(
+                                        Icons.Filled.Edit,
+                                        contentDescription = "${stringResource(R.string.editar)} ${item.nome}"
+                                    )}
                                 IconButton(onClick = {
                                     repository.deletarPosto(item.nome)
                                     postosSalvos = repository.obterPostos()
                                 }) {
-                                    Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.excluir))
+                                    Icon(
+                                        Icons.Filled.Delete,
+                                        contentDescription = "${stringResource(R.string.excluir)} ${item.nome}"
+                                    )
                                 }
                             }
-                        }}
-
-
+                        }
+                    }
                 }
             }
         }
